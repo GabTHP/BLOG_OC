@@ -4,7 +4,9 @@
 
 require '../vendor/autoload.php';
 
-echo 'Hello world!' ;
+require '../app/controllers/controller.php';
+
+saysomething();
 
 echo $_SERVER["REQUEST_URI"];
 
