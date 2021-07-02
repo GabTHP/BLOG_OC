@@ -1,9 +1,6 @@
 <?php
 
-function home()
-{
-    echo "homePage !" ;
-}
+
 
 function contact()
 {
