@@ -54,7 +54,7 @@ $pdo->exec("CREATE TABLE categories (
 	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	title VARCHAR(255) NOT NULL,
 	slug VARCHAR(255) NOT NULL,
-	ft_image VARCHAR(255) NOT NULL
+	featured_image VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
 echo 'Tables : Categories, ';
