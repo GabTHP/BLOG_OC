@@ -11,7 +11,7 @@ $uri= str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
 switch ($uri) {
 
 case "":
-home();
+require '../app/views/index.view.php';
 break;
 
 case "contact":
