@@ -1,3 +1,1 @@
-<?php
-
-echo '<h1>Index</h1>';
+<img src="public/img/admin-ajax.jpeg">
