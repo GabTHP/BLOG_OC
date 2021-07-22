@@ -16,7 +16,7 @@
 Lite des Commentaires
 <h2>
 <?php
-require '../app/db/connDb.php';
+require '../app/db/connDb.php'; 
 
 
 
@@ -24,14 +24,14 @@ require '../app/db/connDb.php';
 $req = $pdo->prepare('SELECT * FROM comments WHERE id_billet = ? ORDER BY date_commentaire');
 $req->execute(array($_GET['billet']));
 $req->execute(array($url[1]));
-while ($donnees = $req->fetch())
+while ($donnees = $req->fetch()) 
 {
 ?>
 <p><strong><?php echo htmlspecialchars($donnees['auteur']); ?></strong> le <?php echo $donnees['date_commentaire_fr']; ?></p>
 <p><?php echo nl2br(htmlspecialchars($donnees['commentaire'])); ?></p>
 <?php
 } // Fin de la boucle des commentaires
-$req->closeCursor();
+$req->closeCursor();   
 ?>
 </body>
 
