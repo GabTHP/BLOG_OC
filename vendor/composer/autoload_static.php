@@ -7,6 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInit497e287a8e8cb4f18c8bd20340a78e19
 {
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Whoops\\' => 7,
+        ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
         'F' => 
         array (
             'Faker\\' => 6,
@@ -14,6 +22,14 @@ class ComposerStaticInit497e287a8e8cb4f18c8bd20340a78e19
     );
 
     public static $prefixDirsPsr4 = array (
+        'Whoops\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
@@ -21,6 +37,7 @@ class ComposerStaticInit497e287a8e8cb4f18c8bd20340a78e19
     );
 
     public static $classMap = array (
+        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
