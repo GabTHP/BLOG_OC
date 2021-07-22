@@ -27,7 +27,7 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
     }
     elseif ($url[0] == 'post' AND !empty($url[1])) {
         $idPost = $url[1];
-        include '../app/views/blog_single.view.php';
+        blog_single();
     }
     else {
         error404();

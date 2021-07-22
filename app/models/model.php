@@ -1,26 +1,29 @@
 <?php
 
-require '../app/db/connDb.php';
+
 
     // On récupère tout le contenu de la table posts
     
-   
+    $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
+    $url=explode('/', $url );  
 
-function get_all_posts() {
+    function get_all_posts() {
+        require '../app/db/connDb.php';
+        $all_posts = $pdo->query('SELECT * FROM posts');
 
-$all_posts = $pdo->query('SELECT * FROM posts');
+        return ($all_posts->fetchAll());
+    }
 
-return ($all_posts->fetchAll());
-}
+    function get_one_post() {
+        // Récupération du billet
+        require '../app/db/connDb.php';
+        $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
+        $url=explode('/', $url );  
+        $req = $pdo->prepare('SELECT * FROM posts WHERE id = ? ');
+        $req->execute(array($url[1]));
+        return($post = $req->fetch());
+    }
 
-function get_one_posts() {
-$one_post = $pdo->query('SELECT * FROM posts WHERE id = ? ');
-return ($one_post->fetchAll());
-}
-    
-    // On récupère le contenu d'un post
-
-    
   
 
 
