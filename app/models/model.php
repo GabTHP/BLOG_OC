@@ -1,7 +1,6 @@
 <?php
 
 
-
     // On récupère tout le contenu de la table posts
     
     $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
@@ -16,11 +15,14 @@
 
     function get_one_post() {
         // Récupération du billet
+
+
         require '../app/db/connDb.php';
         $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         $url=explode('/', $url );  
         $req = $pdo->prepare('SELECT * FROM posts WHERE id = ? ');
         $req->execute(array($url[1]));
+
         return($post = $req->fetch());
     }
 
