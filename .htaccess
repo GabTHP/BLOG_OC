@@ -3,9 +3,10 @@
   RewriteEngine On
   RewriteBase /Blog_Oc/
 
-  RewriteCond %{THE_REQUEST} /public/index.php/([^\s?]*) [NC]
+ 
 RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteCond %{THE_REQUEST} /public/index.php/([^\s?]*) [NC]
 
 RewriteCond %{REQUEST_FILENAME} !(.*)\.(css|js|png|jpg|jpeg)$
   

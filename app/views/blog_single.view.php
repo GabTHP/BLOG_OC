@@ -15,8 +15,8 @@
 require '../app/db/connDb.php';
 
 // Récupération du billet
-$req = $pdo->prepare('SELECT * FROM posts WHERE id = ?');
-$req->execute(array($_GET['post']));
+$req = $pdo->prepare('SELECT * FROM posts WHERE id = ? ');
+$req->execute(array($url[1]));
 $donnees = $req->fetch();
 ?>
 
