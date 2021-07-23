@@ -21,32 +21,30 @@ require '../app/db/connDb.php';
 
 
 // Récupération des commentaires
-$req = $pdo->prepare('SELECT * FROM comments WHERE id_billet = ? ORDER BY date_commentaire');
-$req->execute(array($_GET['billet']));
-$req->execute(array($url[1]));
-while ($donnees = $req->fetch()) 
-{
+
+
 ?>
-<p><strong><?php echo htmlspecialchars($donnees['auteur']); ?></strong> le <?php echo $donnees['date_commentaire_fr']; ?></p>
-<p><?php echo nl2br(htmlspecialchars($donnees['commentaire'])); ?></p>
+
+
 <?php
-} // Fin de la boucle des commentaires
-$req->closeCursor();   
+// Fin de la boucle des commentaires
+
+foreach($post_comments as $key => $comment) {
+$com_id = $comment['comment_id'];
+$req = $pdo->prepare("SELECT * FROM comments WHERE id = ? ");
+$req->execute(array($com_id));
+$comments_data = $req->fetch();
+
+?></b><h2>Auteur <br> <?php echo $comments_data['pseudo']; ?> </h2>
+<p>Titre <br><?php echo($comments_data['title']); ?> <br><br>Contenu <br>
+<?php echo($comments_data['content']); ?> <br><p> <?php
+
+}
+
 ?>
 </body>
 
-<script src="public/assets/vendor/aos/aos.js"></script>
-  <script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="public/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="public/assets/vendor/php-email-form/validate.js"></script>
-  <script src="public/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="public/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="public/assets/vendor/typed.js/typed.min.js"></script>
-  <script src="public/assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="public/assets/js/main.js"></script>
 
 </body>
 </html>

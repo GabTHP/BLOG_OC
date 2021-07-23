@@ -25,5 +25,6 @@ function blog_single()
     require '../app/views/default.layout.view.php';
     require '../app/models/model.php';
     $post = get_one_post();
+    $post_comments = get_comments();
     require '../app/views/blog_single.view.php';
 }
