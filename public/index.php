@@ -29,6 +29,10 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         $idPost = $url[1];
         blog_single();
     }
+    elseif ($url[0] == 'post_create') {
+        require '../app/db/connDb.php';
+        include '../app/views/form_post.view.php' ;
+    }
     else {
         error404();
     } 
