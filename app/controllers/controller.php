@@ -28,3 +28,14 @@ function blog_single()
     $post_comments = get_comments();
     require '../app/views/blog_single.view.php';
 }
+
+function sign_in()
+{
+    require '../app/views/sign_in.view.php';
+}
+
+function sign_up()
+{
+    require '../app/views/sign_up.view.php';
+}
+

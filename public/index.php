@@ -29,6 +29,15 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         $idPost = $url[1];
         blog_single();
     }
+    elseif ($url[0] =='sign_in') {
+        sign_in();
+    }
+    elseif ($url[0] =='sign_up') {
+        sign_up();
+    }
+    elseif ($url[0] =='cible.php') {
+        require '../app/views/cible.php';
+    }
     else {
         error404();
     } 
