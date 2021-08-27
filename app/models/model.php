@@ -33,8 +33,14 @@
         $req = $pdo->prepare('SELECT * FROM posts_comments WHERE post_id = ? ');
         $req->execute(array($url[1]));
         return ($post_comments = $req->fetchAll());
-    
     }
+
+    function sign_up_form() {
+        
+        
+    }
+
+
 
  
 
