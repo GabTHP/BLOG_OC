@@ -13,6 +13,7 @@ $options = [
 	\PDO::ATTR_EMULATE_PREPARES 		=> false,
 ];
 
+
 try {
 	$pdo = new \PDO($dsn, $user, $psw, $options);
 } catch (\PDOException $e) {
