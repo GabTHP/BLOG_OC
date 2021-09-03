@@ -8,6 +8,9 @@ require '../app/controllers/controller.php';
 
 require '../app/controllers/adminController.php';
 
+require '../app/controllers/userController.php';
+
+
 // Active mode débug
 
 

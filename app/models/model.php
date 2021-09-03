@@ -35,10 +35,6 @@
         return ($post_comments = $req->fetchAll());
     }
 
-    function sign_up_form() {
-        
-        
-    }
 
     function get_all_users() {
         require '../app/db/connDb.php';
