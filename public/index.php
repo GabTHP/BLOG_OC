@@ -6,6 +6,8 @@ require '../vendor/autoload.php';
 
 require '../app/controllers/controller.php';
 
+require '../app/controllers/adminController.php';
+
 // Active mode débug
 
 
@@ -35,8 +37,12 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
     elseif ($url[0] =='sign_up') {
         sign_up();
     }
-    elseif ($url[0] =='cible.php') {
-        require '../app/views/cible.php';
+    elseif ($url[0] == 'users_all') {
+        users_all();
+    }
+    elseif ($url[0] == 'user' AND !empty($url[1])) {
+        $idUser = $url[1];
+        user_single();
     }
     else {
         error404();
