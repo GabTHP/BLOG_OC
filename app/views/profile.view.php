@@ -5,16 +5,16 @@
         <div class="candidate-list-details">
         <div class="candidate-list-info">
             <div class="candidate-list-title">
-            <h5 class="mb-0"><a href="#"><?php echo $user['username']; ?></a></h5>
+            <h5 class="mb-0"><a href="#"><?php echo $_SESSION['username' ]; ?></a></h5>
             </div>
             <div class="candidate-list-option">
             <ul class="list-unstyled">
-                <p>Pseudo : <input type="text" name="Username" placeholder="<?php  echo $user['username']; ?>"/>
-                <p>Email : <input type="text" name="email" placeholder="<?php  echo $user['email']; ?>"/>
-                <p>Role : <input type="text" name="email" placeholder="<?php  echo $user['role']; ?>"/>
-                <p>Utilisateur Valide : <input type="text" name="is_valid" placeholder="<?php  echo $user['is_valid']; ?>"/>
-                <input type="submit" value="Valider" name="submit" />
-                <button> Supprimer </button> 
+                <p>Pseudo : <?php echo $_SESSION['username' ]; ?></p>
+                <p>Email : <?php echo $_SESSION['email']; ?></p>
+                <p>Role :<?php echo $_SESSION['role']; ?></p>
+                <p>Statut du compte : <?php  echo $_SESSION['is_valid'];?></p>
+                <button> Supprimer mon Compte </button> 
+                <button> Modifier mon Compte </button>
             </ul>
             </div>
         <button> Retour </button> 
