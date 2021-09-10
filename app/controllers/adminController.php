@@ -37,10 +37,3 @@ function users_all()
  }
 }
 
-function user_single()
-{
-    require '../app/views/default.layout.view.php';
-    require '../app/models/userModel.php';
-    $user = get_one_user();
-    require '../app/views/adminUserSingle.view.php';
-}

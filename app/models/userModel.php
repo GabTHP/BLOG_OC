@@ -7,15 +7,15 @@ function get_all_users() {
         return ($all_users->fetchAll());
     }
 
-    function get_one_user() {
-        // Récupération d'un user
+function get_one_user() {
+    // Récupération d'un user
 
 
-        require '../app/db/connDb.php';
-        $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
-        $url=explode('/', $url );  
-        $req = $pdo->prepare('SELECT * FROM users WHERE id = ? ');
-        $req->execute(array($url[1]));
+    require '../app/db/connDb.php';
+    $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
+    $url=explode('/', $url );  
+    $req = $pdo->prepare('SELECT * FROM users WHERE id = ? ');
+    $req->execute(array($url[1]));
 
-        return($post = $req->fetch());
-    }
+    return($post = $req->fetch());
+}
