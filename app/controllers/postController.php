@@ -1,17 +1,17 @@
 <?php
 
-function listPosts()
+function blog_all()
 {
-    $posts = getPosts();
-
-    require('listPostsView.php');
-    
+    require '../app/models/postModel.php';
+    $all_posts = get_all_posts();
+    require '../app/views/blog_all.view.php';
 }
 
-function post()
+function blog_single()
 {
-    $post = getPost($_GET['id']);
-    $comments = getComments($_GET['id']);
-
-    require('postView.php');
+    require '../app/views/default.layout.view.php';
+    require '../app/models/postModel.php';
+    $post = get_one_post();
+    $post_comments = get_comments();
+    require '../app/views/blog_single.view.php';
 }

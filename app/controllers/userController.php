@@ -49,7 +49,7 @@ function sign_in()
             if  ($user) { $psw = $user['password'];
                     if (password_verify($password, $psw))
                         {
-                        echo 'user exist';
+                        echo 'Utilisateur Correct';
                         $_SESSION['email'] = $email;
                         $_SESSION['role'] = $user['role'];
                         $_SESSION['is_valid'] = $user['is_valid'];

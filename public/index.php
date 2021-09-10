@@ -10,6 +10,8 @@ require '../app/controllers/adminController.php';
 
 require '../app/controllers/userController.php';
 
+require '../app/controllers/postController.php';
+
 
 // Active mode débug
 
@@ -41,7 +43,14 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         sign_up();
     }
     elseif ($url[0] == 'users_all') {
-        users_all();
+        session_start();
+        if ($_SESSION['role']='admin') {
+            users_all();
+        }
+        else {
+            error404();
+        }
+        
     }
     elseif ($url[0] == 'user' AND !empty($url[1])) {
         $idUser = $url[1];
