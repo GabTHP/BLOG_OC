@@ -54,6 +54,7 @@ function sign_in()
                         $_SESSION['role'] = $user['role'];
                         $_SESSION['is_valid'] = $user['is_valid'];
                         $_SESSION['username'] = $user['username'];
+                        $_SESSION['id'] = $user['id'];
                         }
                     else {
                         echo "mauvais mot de passe";
@@ -68,3 +69,42 @@ function sign_in()
  }
 }
 
+function profile()
+{
+    require '../app/db/connDb.php';
+    require '../app/views/profile.view.php';
+}
+
+function profile_edit()
+{
+    require '../app/db/connDb.php';
+    require '../app/views/profile_edit.view.php';
+    $user_id = $_SESSION['id'];
+
+    if(isset($_POST['Valider'])) {
+        $username =  $_POST['username'];
+        $email = $_POST['email'];
+        $_SESSION['username'] = $username;
+
+
+	$pdo->exec("UPDATE `users` SET username = '{$username}', slug = '{$username}', email = '{$email}' WHERE `users`.`id` = {$user_id}");
+    }
+
+    if(isset($_POST['submit_mdp'])) {
+        $password =  $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+
+        if ($password == $confirm_password) {
+            $hash_password = password_hash($password, PASSWORD_BCRYPT);
+
+            $pdo->exec("UPDATE `users` SET password = '{$hash_password}' WHERE `users`.`id` = {$user_id}");
+            echo "mot de passe mis à jours";
+        } 
+        else {
+            echo "les mots de passes doivent être identiques" ;
+        }
+
+
+
+    }
+}   

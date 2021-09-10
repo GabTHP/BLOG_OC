@@ -44,14 +44,39 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
     }
     elseif ($url[0] == 'users_all') {
         session_start();
-        if ($_SESSION['role']='admin') {
+        if (isset($_SESSION['role']) && ($_SESSION['role'])=='Admin') {
             users_all();
         }
         else {
             error404();
-        }
-        
+        } 
     }
+    elseif ($url[0] == 'profile') {
+        session_start();
+        if (isset($_SESSION['username'])) {
+            profile();
+        }
+        else {
+            error404();
+        }
+          
+    }
+    elseif ($url[0] == 'profile_edit') {
+        session_start();
+        if (isset($_SESSION['username'])) {
+            profile_edit();
+        }
+        else {
+            error404();
+        }
+          
+    }
+
+    elseif ($url[0] == 'logout') {
+        session_start();
+        session_destroy();
+    }
+    
     elseif ($url[0] == 'user' AND !empty($url[1])) {
         $idUser = $url[1];
         user_single();
