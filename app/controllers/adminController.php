@@ -1,11 +1,15 @@
 <?php
-
+ require '../app/models/userModel.php';
+ 
 function users_all()
 {
-    require '../app/models/model.php';
+   
     $all_users = get_all_users();
     require '../app/views/adminUserAll.view.php';
     require '../app/db/connDb.php';
+
+    
+
     if(isset($_POST['delete'])) 
     {
     $pdo->exec("SET FOREIGN_KEY_CHECKS=0;") ;   
@@ -36,7 +40,7 @@ function users_all()
 function user_single()
 {
     require '../app/views/default.layout.view.php';
-    require '../app/models/model.php';
+    require '../app/models/userModel.php';
     $user = get_one_user();
     require '../app/views/adminUserSingle.view.php';
 }
