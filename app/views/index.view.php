@@ -587,7 +587,7 @@
           <h2>Contact</h2>
         </div>
 
-        <div class="row mt-1">
+        <div class="row mt-1">••••••••
 
           <div class="col-lg-4">
             <div class="info">
