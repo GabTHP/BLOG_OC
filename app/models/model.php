@@ -23,6 +23,7 @@
         $req->execute(array($url[1]));
 
         return($post = $req->fetch());
+    
     }
 
 

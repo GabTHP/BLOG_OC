@@ -25,6 +25,8 @@
         return($post = $req->fetch());
     }
 
+    
+
 
     function get_comments() {
         require '../app/db/connDb.php';
@@ -35,6 +37,7 @@
         return ($post_comments = $req->fetchAll());
     }
 
+    
 
     
 

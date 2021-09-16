@@ -36,6 +36,11 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         $idPost = $url[1];
         blog_single();
     }
+    elseif ($url[0] == 'post_create') {
+        session_start();
+        post_create();
+    }
+
     elseif ($url[0] =='sign_in') {
         sign_in();
     }
@@ -69,7 +74,6 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         else {
             error404();
         }
-          
     }
 
     elseif ($url[0] == 'logout') {
@@ -85,53 +89,3 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         error404();
     } 
 
-// dans la fonction controlleur configurer l'id
-
-//switch ($uri) {
-
-//case "":
-//home();
-//break;
-
-//case "blog_all":
-//blog_all();
-//break;
-
-//case "blog_single/":
-//    blog_single();
-//    echo 'jexiste';
-//    break;
-
-//default :
-//error404();
-//break;
-
-//}
-
-
-//$url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
-
-//$router = new AltoRouter();
-
-// Map  Routes
-
-//$router->map('GET', '/', 'index', 'index');
-//$router->map('GET', '/404', '404', '404');
-
-// Match Routes
-
-//$match = $router->match();
-
-
-//if( is_array($match)) {
-  //  if( is_callable( $match['target'] ) ) {
-    //    call_user_func_array( $match['target'], $match['params'] ); 
-//    } else {
- //       $params = $match['params'];
-  //      // match target with view
-  //      // no route was matched
- //       include "../app/views/{$match['target']}.view.php";
-  //  }
-//} else {
- //   require "../app/views/404.view.php";
-//}
