@@ -18,30 +18,40 @@ Lite des Commentaires
 <?php
 require '../app/db/connDb.php'; 
 
-
-
-// Récupération des commentaires
-
-
-?>
-
-
-<?php
-// Fin de la boucle des commentaires
-
-foreach($post_comments as $key => $comment) {
-$com_id = $comment['comment_id'];
-$req = $pdo->prepare("SELECT * FROM comments WHERE id = ? ");
-$req->execute(array($com_id));
-$comments_data = $req->fetch();
-
-?></b><h2>Auteur <br> <?php echo $comments_data['pseudo']; ?> </h2>
-<p>Titre <br><?php echo($comments_data['title']); ?> <br><br>Contenu <br>
-<?php echo($comments_data['content']); ?> <br><p> <?php
-
+if (!$comments) {
+    echo 'Pas encore de Commentaires';
 }
 
+else {
+    $count = 0 ;
+    foreach($comments as $key => $comment) {
+        
+        if ($comment['is_valid'] == True) 
+        {
+            $count = $count + 1;
+            ?></b><h2>Auteur <br> <?php echo $comment['pseudo']; ?> </h2>
+            Contenu <br>
+            <?php echo($comment['content']); ?> <br><p> <?php
+        }
+    }
+    if ($count == 0) {
+        echo 'pas encore de commentaire' ;
+    }
+}
+
+
+
+
 ?>
+
+<section class="signup-form">
+    <h2>Ajouter un commentaire</h2>
+
+    <form  method="post" action="" accept-charset="utf-8">
+        <input type="text" name="content" placeholder="Texte"/><br>
+        <input type="submit" value="Publier" name="submit" />
+    </form>
+</section>
 </body>
 
 

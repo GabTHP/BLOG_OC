@@ -30,10 +30,12 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         home();
     }
     elseif ($url[0] == 'blog_all') {
+        session_start();
         blog_all();
     }
     elseif ($url[0] == 'post' AND !empty($url[1])) {
         $idPost = $url[1];
+        session_start();
         blog_single();
     }
     elseif ($url[0] == 'post_create') {

@@ -8,32 +8,38 @@ function users_all()
     require '../app/views/adminUserAll.view.php';
     require '../app/db/connDb.php';
 
-    
-
     if(isset($_POST['delete'])) 
     {
-    $pdo->exec("SET FOREIGN_KEY_CHECKS=0;") ;   
-	$pdo->exec("DELETE FROM `users` WHERE `users`.`id` = {$user_id}") ;
-    $pdo->exec("SET FOREIGN_KEY_CHECKS=1;") ;  
-    ?>
-    <script type="text/javascript">
-    window.alert("L'utilisateur a été supprimé")
-    </script>
-    <?php
+        $id = $_POST['id'];
+        $pdo->exec("DELETE FROM users WHERE id = '{$id}' ") ;
+
+        ?>
+        <script type="text/javascript">
+        window.alert("L'utilisateur a été supprimé")
+        </script>
+        <?php
     }
     
     if(isset($_POST['validate'])) 
     {
-	$pdo->exec("UPDATE `users` SET is_valid = 1 WHERE `users`.`id` = {$user_id}");
+        $id = $_POST['id'];
+        $pdo->exec("UPDATE `users` SET is_valid = 1 WHERE `users`.`id` = '{$id}'");
 
-    ?>
-    <script type="text/javascript">
-    window.alert("L'utilisateur a été validé")
-    </script>
-    <?php
+        ?>
+        <script type="text/javascript">
+        window.alert("L'utilisateur a été validé")
+        </script>
+        <?php
+    }
+    if(isset($_POST['Update_Role'])) {
+        $id = $_POST['id'];
+        $role =  $_POST['role'];
+        $pdo->exec("UPDATE `users` SET role = 1 WHERE `users`.`id` = {$id}");
+    }
 
-
-
- }
 }
 
+function comment_validation()
+{
+    
+}

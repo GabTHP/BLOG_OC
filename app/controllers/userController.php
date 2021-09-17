@@ -103,8 +103,5 @@ function profile_edit()
         else {
             echo "les mots de passes doivent être identiques" ;
         }
-
-
-
     }
 }   
