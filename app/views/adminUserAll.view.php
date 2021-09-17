@@ -20,15 +20,30 @@ foreach($all_users as $key => $user) {
                 <li><i class="fas fa-filter pr-1"></i><?php  echo $user['email']; ?></li>
                 <li><i class="fas fa-map-marker-alt pr-1"></i><?php echo $user['role']; ?></li>
                 <li><i class="fas fa-map-marker-alt pr-1"></i><?php echo $user['is_valid']; ?></li>
-                <?php $user_id=$user['id']; ?>
+                <?php echo $id = $user['id']; ?>
+                
+                
 
             </ul>
         </div>
         <form method="post" action="users_all" >
+            <input  name="id" type="hidden" value="<?php echo $id ?>">
             <input type="submit" name="validate" value="validate">
         </form>
+
         <form method="post" action="users_all" >
+            <input  name="id" type="hidden" value="<?php echo $id ?>" placeholder="<?php echo $id ?>">
             <input type="submit" name="delete" value="delete">
+        </form>
+
+        <form method="post" action="users_all" >
+            <input  name="id" type="hidden" value="<?php echo $id ?>">
+            <select name="role">
+                <option value="<?php echo $user['role'] ?>">Role actuel: <?php echo $user['role'] ?></option>
+                <option value="Admin" >Admin</option>
+                <option value="Subscriber"> Subscriber</option>
+            </select>
+            <input type="submit" name="Update_Role" value="Update_Role">
         </form>
         </div>
         </div>

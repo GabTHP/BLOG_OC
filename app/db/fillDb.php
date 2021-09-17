@@ -15,14 +15,10 @@ $users = [];
 // Clean db
 
 $pdo->exec("SET FOREIGN_KEY_CHECKS = 0");
-$pdo->exec("TRUNCATE TABLE posts_categories"); 
-$pdo->exec("TRUNCATE TABLE posts_comments");
-$pdo->exec("TRUNCATE TABLE users_posts");
-$pdo->exec("TRUNCATE TABLE posts_tags");
+
 $pdo->exec("TRUNCATE TABLE users");
 $pdo->exec("TRUNCATE TABLE comments");
-$pdo->exec("TRUNCATE TABLE posts");
-$pdo->exec("TRUNCATE TABLE tags");       
+$pdo->exec("TRUNCATE TABLE posts");      
 $pdo->exec("SET FOREIGN_KEY_CHECKS = 1");
 
 echo 'Database tables cleaned successfuly!';
