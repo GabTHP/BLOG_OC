@@ -3,8 +3,21 @@
 function blog_all()
 {
     require '../app/models/postModel.php';
+    require '../app/db/connDb.php';
     $all_posts = get_all_posts();
     require '../app/views/blog_all.view.php';
+
+    if(isset($_POST['delete'])) 
+    {
+        $id = $_POST['id'];
+        $pdo->exec("DELETE FROM posts WHERE id = '{$id}' ") ;
+
+        ?>
+        <script type="text/javascript">
+        window.alert("La publication a été supprimée")
+        </script>
+        <?php
+    }
 }
 
 function blog_single()
@@ -62,6 +75,33 @@ function post_create()
 		    	");
         $posts[] = $pdo->lastInsertId();
         }
+}
+
+function post_update()
+{
+    require '../app/db/connDb.php';
+    require '../app/models/postModel.php';
+    require '../app/views/form_post_update.view.php';
+
+    if (isset($_POST["submit"])) 
+    {
+    $title = addslashes($_POST['title']);
+    $content = addslashes($_POST['content']);
+    $featured_image = $_POST['featured_image'];
+    $date = date("Y-m-d H:i:s"); ;
+    $user_id = $_SESSION['id'];
+
+    $pdo->exec("INSERT INTO posts 
+        SET title='{$title}',
+            content='{$content}',
+            slug='{$title}',
+            featured_image='{$featured_image}',
+            created_at = '{$date}',
+            is_valid = False, 
+            user_id = $user_id
+            ");
+    $posts[] = $pdo->lastInsertId();
+    }
 }
 
 
