@@ -19,3 +19,9 @@ function get_one_user() {
 
     return($post = $req->fetch());
 }
+
+function get_author() {
+    $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");
+    $querry->execute(array($post['user_id']));
+    return ($user = $querry->fetch());
+}

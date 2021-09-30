@@ -31,7 +31,8 @@ function users_all()
         </script>
         <?php
     }
-    if(isset($_POST['Update_Role'])) {
+    if(isset($_POST['Update_Role'])) 
+    {
         $id = $_POST['id'];
         $role =  $_POST['role'];
         $pdo->exec("UPDATE `users` SET role = 1 WHERE `users`.`id` = {$id}");
@@ -39,7 +40,28 @@ function users_all()
 
 }
 
-function comment_validation()
-{
-    
+function dashboard() {
+    require '../app/models/postModel.php';
+    $all_posts = get_all_posts();
+    $count = 0 ;
+    $count_comment = 0 ;
+    $all_comments = get_all_comments();
+    require '../app/views/dashboard.view.php' ;
+    require '../app/db/connDb.php';
+
+    if (isset($_POST['valid']))
+    {
+        $id_post = $_POST['id'];
+        $pdo->exec("UPDATE `posts` SET is_valid = 1 WHERE `posts`.`id` = {$id_post}");
+        echo 'post validé';
+    }
+
+    if (isset($_POST['valid_comment']))
+    {
+        $id_comment = $_POST['id'];
+        $pdo->exec("UPDATE `comments` SET is_valid = 1 WHERE `comments`.`id` = {$id_comment}");
+        echo 'commentaire validé';
+    }
+
+
 }

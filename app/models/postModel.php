@@ -36,6 +36,12 @@
         $req->execute(array($url[1]));
         return ($comments = $req->fetchAll());
     }
+
+    function get_all_comments() {
+        require '../app/db/connDb.php';
+        $all_comments = $pdo->query('SELECT * FROM comments');
+        return ($all_comments->fetchAll());
+    }
     
 
     
