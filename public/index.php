@@ -78,15 +78,19 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         }
     }
 
+        
+    elseif ($url[0] == 'dashboard') {
+        session_start();
+        dashboard();
+
+    
+    }
+
     elseif ($url[0] == 'logout') {
         session_start();
         session_destroy();
     }
-    
-    elseif ($url[0] == 'user' AND !empty($url[1])) {
-        $idUser = $url[1];
-        user_single();
-    }
+
     else {
         error404();
     } 
