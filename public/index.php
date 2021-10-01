@@ -38,6 +38,17 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         session_start();
         blog_single();
     }
+    elseif ($url[0] == 'edit_post' AND !empty($url[1])) {
+        $idPost = $url[1];
+        session_start();
+        if (isset($_SESSION['role']) && ($_SESSION['role'])=='Admin') {
+            post_edit();
+        }
+        else {
+            error404();
+        } 
+    }
+
     elseif ($url[0] == 'post_create') {
         session_start();
         post_create();
