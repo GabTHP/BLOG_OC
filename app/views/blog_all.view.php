@@ -14,12 +14,13 @@ foreach($all_posts as $key => $post) {
 
     <a href="/Blog_Oc/post/<?php echo $post['id']?>">Consulter la publication</a>
 
-    <?php if ($_SESSION['role'] == 'Admin') {
+    <?php if (isset($_SESSION['role']) AND $_SESSION['role'] == 'Admin') {
       ?> 
       <form method="post" action="blog_all" >
         <input  name="id" type="hidden" value="<?php echo $post['id'] ?>" placeholder="<?php echo $post['id'] ?>">
         <input type="submit" name="delete" value="delete">
       </form>
+      <a href = /Blog_Oc/edit_post/<?php echo $post['id'];?>> Modifier </a>
 
     <?php 
   }
