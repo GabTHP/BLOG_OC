@@ -1,16 +1,29 @@
-<head>
-<meta charset="utf-8" />
-</head>
+<div class="jumbotron p-5 text-center">
+    <h1>Créer un nouvel article</h1>
+</div>
 
+<div class="container p-5">
+    <a href="/Blog_Oc/blog_all">
+        <p class="text-muted"> Retour <p>
+    </a>
 
+    <div class="signup-form">
+        <h2>Créer une publication :</h2>
 
-<section class="signup-form">
-    <h2>Créer un post</h2>
+        <form method="post" action="post_create" accept-charset="utf-8">
+            <div class="form-group">
+                <label for="title">Titre:</label>
+                <input type="text" class="form-control" name="title" /><br>
+            </div>
+            <div class="form-group">
+                <label for="text">Contenu:</label>
+                <textarea type="textarea" style="min-height:150px;" class="form-control" name="content"></textarea><br>
+            </div>
+            <p>Mettre à jour l'illustration</p>
+            <input class="form-control" type="file" name="featured_image"><br>
+            <input type="submit" class="btn btn-primary" value="Enregistrer" name="submit" />
+        </form>
 
-    <form  method="post" action="post_create" accept-charset="utf-8">
-        <input type="text" name="title" placeholder="titre"/><br>
-        <input type="text" name="content" placeholder="Texte"/><br>
-        <input type="file" name="featured_image" placeholer="Image"/><br>
-        <input type="submit" value="Publier" name="submit" />
-    </form>
-</section>
+    </div>
+</div>
+<?php include '../app/views/footer.view.php'; ?>

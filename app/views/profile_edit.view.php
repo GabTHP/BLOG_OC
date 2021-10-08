@@ -1,39 +1,40 @@
-<tbody>
-    <tr class="candidates-list">
-    <td class="title">
-        <div class="candidate-list-details">
-        <div class="candidate-list-info">
-            <div class="candidate-list-title">
-            <p>Mettre à jour mes infos</p>
+<div class="jumbotron p-5 text-center">
+    <h1>Mise à jour Profil</h1>
+</div>
+
+<div class="container p-5">
+    <a href="/Blog_Oc/profile">
+        <p class="text-muted"> Revenir sur mon profil <p>
+    </a>
+    <div class="signup-form">
+        <h2>Mettre à Jour mon profil :</h2>
+
+        <form method="post" action="" accept-charset="utf-8">
+            <div class="form-group">
+                <p>Pseudo : <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['username']; ?>" />
             </div>
-            <div class="candidate-list-option">
-            <ul class="list-unstyled">
-                <form action="profile" method="post"  >
-                    <p>Pseudo : <input type="text" name="username" value="<?php  echo $_SESSION['username']; ?>"/>
-                    <p>Email : <input type="text" name="email" value="<?php  echo $_SESSION['email']; ?>"/><br>
-                    <input type="submit" value="Valider" name="Valider" />
-                </form>
-            </ul>
+            <div class="form-group">
+                <p>Email : <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['email']; ?>" />
             </div>
-            <div class="candidate-list-title">
-            <p>Mettre à jour mon mot de passe</p>
+            <input type="submit" class="btn btn-primary" value="Valider" name="Valider" />
+        </form>
+        <br><br>
+        <h2>Changer mon mot de passe :</h2>
+
+        <form method="post" action="" accept-charset="utf-8">
+            <div class="form-group">
+                <p>Nouveau mot de passe : <input type="text" class="form-control" name="password" />
             </div>
-            <div class="candidate-list-option">
-            <ul class="list-unstyled">
-                <form method="post" action="profile_edit">
-                    <p>Nouveau mot de passe : <input type="text" name="password"/>
-                    <p>Confirmer le mot de passe : <input type="text" name="confirm_password" /><br>
-                    <input type="submit"  value="Valider" name="submit_mdp" />
-                </form>
-            </ul>
+            <div class="form-group">
+                <p>Confirmer le mot de passe : <input type="text" class="form-control" name="confirm_password" />
             </div>
-        <button> Retour </button> 
-        </div>
-        </div>
-    </td>
-    </tr>
-</tbody>
-<?php
+            <input type="submit" class="btn btn-primary" value="Confirmer" name="submit_mdp" />
+        </form>
+
+    </div>
+</div>
+
+<?php include '../app/views/footer.view.php'; ?>
 
 
 
@@ -42,6 +43,8 @@
 
 
 
- 
+
+
+
 
 ?>

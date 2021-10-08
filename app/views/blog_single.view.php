@@ -54,7 +54,7 @@
     require '../app/db/connDb.php';
 
     if (!$comments) {
-    ?><p><?php echo "Il n'a pas encore de commentaire, soyez le premier à réagir ! :)"; ?></p>
+    ?><p><?php echo "Il n'y a pas encore de commentaire, soyez le premier à réagir ! :)"; ?></p>
         <?php
     } else {
         $count = 0;
@@ -70,23 +70,19 @@
                 }
             }
             if ($count == 0) {
-                echo "Il n'a pas encore de commentaire, soyez le premier à réagir ! :)";
+                echo "Il n'y a pas encore de commentaire, soyez le premier à réagir ! :)";
             }
         }
-
-
-
-
                     ?>
 
-                <section class="signup-form">
-                    <h2>Ajouter un commentaire</h2>
+                <div>
+                    <h2>Ajouter un commentaire :</h2>
 
                     <form method="post" action="" accept-charset="utf-8">
-                        <input type="text" name="content" placeholder="Texte" /><br>
-                        <input type="submit" value="Publier" name="submit" />
+                        <textarea class="form-control" type="text" name="content" placeholder="Texte"></textarea><br>
+                        <input class="btn btn-primary" type="submit" value="Publier" name="submit" />
                     </form>
-                </section>
+                </div>
 </div>
 
 <?php include '../app/views/footer.view.php'; ?>

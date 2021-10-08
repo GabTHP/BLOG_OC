@@ -16,7 +16,7 @@
       <div class="article-box">
         <img src="/Blog_Oc/public/img/devblog.jpg" width="1500" height="1368" alt="">
       </div>
-      <div class="recipe-content ">
+      <div class=" p-3">
         <h1><a href="/Blog_Oc/post/<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h1>
         <p>
           <?php
@@ -58,7 +58,10 @@
             <p><b> Gérer l'article : </b></p>
             <form method="post" action="blog_all">
               <input name="id" type="hidden" value="<?php echo $post['id'] ?>" placeholder="<?php echo $post['id'] ?>">
-              <input style="color:white;" class="btn btn-danger" type="submit" name="delete" value="Supprimer"> <a href=/Blog_Oc/edit_post/<?php echo $post['id']; ?>><button style="color:white;" class="btn btn-warning"> Modifier </button></a>
+              <input style="color:white;" class="btn btn-danger" type="submit" name="delete" value="Supprimer">
+              <a class="text-white btn btn-warning" href=/Blog_Oc/edit_post/<?php echo $post['id']; ?>>
+                Modifier
+              </a>
             </form>
           <?php
           }
