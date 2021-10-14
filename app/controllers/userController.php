@@ -21,8 +21,12 @@ function sign_up()
 		    	is_valid = False
 		    	");
         $users[] = $pdo->lastInsertId();
-
-        echo 'users created';
+?>
+        <script type="text/javascript">
+            window.alert("votre compte a été créé")
+            window.location.href = "/Blog_Oc/blog_all";
+        </script>
+        <?php
     }
 }
 
@@ -44,12 +48,16 @@ function sign_in()
             if ($user) {
                 $psw = $user['password'];
                 if (password_verify($password, $psw)) {
-                    echo 'Utilisateur Correct';
                     $_SESSION['email'] = $email;
                     $_SESSION['role'] = $user['role'];
                     $_SESSION['is_valid'] = $user['is_valid'];
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['id'] = $user['id'];
+        ?>
+                    <script type="text/javascript">
+                        window.location.href = "/Blog_Oc/blog_all";
+                    </script>
+    <?php
                 } else {
                     echo "mauvais mot de passe";
                 }
@@ -82,6 +90,12 @@ function profile_edit()
 
         $pdo->exec("UPDATE `users` SET username = '{$username}', slug = '{$username}', email = '{$email}' WHERE `users`.`id` = {$user_id}");
     }
+    ?>
+    <script type="text/javascript">
+        window.alert("votre profil a été mis à jour")
+        window.location.href = "/Blog_Oc/profile";
+    </script>
+    <?php
 
     if (isset($_POST['submit_mdp'])) {
         $password =  $_POST['password'];
@@ -91,7 +105,12 @@ function profile_edit()
             $hash_password = password_hash($password, PASSWORD_BCRYPT);
 
             $pdo->exec("UPDATE `users` SET password = '{$hash_password}' WHERE `users`.`id` = {$user_id}");
-            echo "mot de passe mis à jours";
+    ?>
+            <script type="text/javascript">
+                window.alert("votre mot de passe a été misà jour")
+                window.location.href = "/Blog_Oc/profile";
+            </script>
+        <?php
         } else {
             echo "les mots de passes doivent être identiques";
         }
@@ -101,9 +120,11 @@ function profile_edit()
         $id = $_SESSION['id'];
         $pdo->exec("DELETE FROM users WHERE id = '{$id}' ");
 
-?>
+        ?>
         <script type="text/javascript">
-            window.alert("Votre compte a été supprimé")
+            window.alert("Le compte a été supprimé");
+
+            window.location.href = "/Blog_Oc/dashboard"
         </script>
 <?php
     }

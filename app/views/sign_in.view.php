@@ -1,9 +1,3 @@
-<?php
-
-session_start();
-
-?>
-
 <div class="jumbotron p-5 text-center">
     <h1>Connecter vous à votre compte</h1>
 </div>
@@ -26,6 +20,8 @@ session_start();
                     <input type="password" class="form-control" name="password"><br>
                 </div>
                 <input class="btn btn-primary" type="submit" value="Se connecter" name="submit" />
+                <br>
+                <p> Vous n'avez pas encore de compte ? <a href="/Blog_Oc/sign_up">Cliquez ici</a>
             </form>
         </div>
 

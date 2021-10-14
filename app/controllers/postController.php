@@ -17,7 +17,7 @@ function blog_all()
         <script type="text/javascript">
             window.alert("La publication a été supprimée")
         </script>
-<?php
+    <?php
     }
 }
 
@@ -39,7 +39,7 @@ function post_create()
     if (isset($_POST["submit"])) {
         $title = addslashes($_POST['title']);
         $content = addslashes($_POST['content']);
-        $featured_image = $_POST['featured_image'];
+        $featured_image = addslashes($_POST['featured_image']);
         $date = date("Y-m-d H:i:s");;
         $user_id = $_SESSION['id'];
 
@@ -52,7 +52,15 @@ function post_create()
 		    	is_valid = False, 
                 user_id = $user_id
 		    	");
+
         $posts[] = $pdo->lastInsertId();
+
+    ?>
+        <script type="text/javascript">
+            alert("Votre publication a été créée, rendez-vous sur votre dashboard pour la valider");
+            window.location.href = "/Blog_Oc/dashboard";
+        </script>
+    <?php
     }
 }
 
@@ -81,5 +89,12 @@ function post_edit()
             updated_at = '{$date}',
             is_valid = 1 
         WHERE posts.id = {$post_id}");
+
+    ?>
+        <script type="text/javascript">
+            alert("La publication a été mise à jour");
+            window.location.href = "/Blog_Oc/post/<?php echo $post_id ?>";
+        </script>
+<?php
     }
 }

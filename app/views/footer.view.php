@@ -2,10 +2,11 @@
 <footer id="footer">
     <div class="container">
         <h3>Gabriel Bouakira</h3>
-        <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+        <p>Expert en développment et stratégie digitale, je vous accompagne dans la construction de votre projet Web.</p>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/gabriel-bouakira" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
+        <a href="/Blog_Oc/sign_in" class="linkedin">Se Connecter</a>
     </div>
 </footer><!-- End Footer -->
 

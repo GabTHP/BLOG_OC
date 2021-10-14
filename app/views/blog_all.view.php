@@ -11,6 +11,14 @@
   // On affiche chaque publicaion une à une
   foreach ($all_posts as $key => $post) {
   ?>
+    <?php if (isset($_SESSION['role']) and $_SESSION['role'] == 'Admin') {
+    ?>
+      <div class="text-center">
+        <br><br><a class="btn btn-primary" href="/Blog_Oc/post_create">Créer un nouvel article</a>
+      </div>
+    <?php
+    }
+    ?>
 
     <article class="article m-5">
       <div class="article-box">

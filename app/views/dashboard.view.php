@@ -45,7 +45,7 @@
                     $count = $count + 1;
             ?> <article class="article m-3">
                         <div class="m-3">
-                            <p> <b> Titre : </b>?php echo $post['title']; ?> </p>
+                            <p> <b> Titre : </b><?php echo $post['title']; ?> </p>
                             <p> <b>Créé le :</b> <?php echo $post['created_at']; ?></p>
                             <?php
                             $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");

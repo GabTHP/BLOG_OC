@@ -76,12 +76,22 @@
                     ?>
 
                 <div>
-                    <h2>Ajouter un commentaire :</h2>
 
-                    <form method="post" action="" accept-charset="utf-8">
-                        <textarea class="form-control" type="text" name="content" placeholder="Texte"></textarea><br>
-                        <input class="btn btn-primary" type="submit" value="Publier" name="submit" />
-                    </form>
+                    <h2>Ajouter un commentaire :</h2>
+                    <?php if (isset($_SESSION['username'])) {
+                    ?>
+                        <form method="post" action="" accept-charset="utf-8">
+                            <textarea class="form-control" type="text" name="content" placeholder="Texte"></textarea><br>
+                            <input class="btn btn-primary" type="submit" value="Publier" name="submit" />
+                        </form>
+                    <?php
+                    } else {
+                    ?>
+                        <p> Vous devez être connecté pour laisser un commentaire </p>
+                        <a class="btn btn-primary" href="/Blog_Oc/sign_in"> Se connecter</a>
+                    <?php
+                    }
+                    ?>
                 </div>
 </div>
 
