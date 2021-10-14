@@ -1,12 +1,3 @@
-<?php
-
-require '../app/db/connDb.php';
-session_start();
-
-?>
-
-
-
 <div class="jumbotron p-5 text-center">
     <h1>Inscrivez-vous et participer aux discussions ! </h1>
 </div>
