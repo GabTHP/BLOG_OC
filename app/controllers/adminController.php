@@ -61,6 +61,6 @@ function dashboard()
     if (isset($_POST['delete_com'])) {
         $id_comment = $_POST['id'];
         $pdo->exec("DELETE FROM comments WHERE `comments`.`id` = {$id_comment}");
-        echo 'commentaire validé';
+        echo 'commentaire Supprimé';
     }
 }
