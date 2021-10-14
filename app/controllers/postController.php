@@ -39,27 +39,50 @@ function post_create()
     if (isset($_POST["submit"])) {
         $title = addslashes($_POST['title']);
         $content = addslashes($_POST['content']);
-        $featured_image = addslashes($_POST['featured_image']);
+        $featured_image = $_FILES['featured_image']['name'];
         $date = date("Y-m-d H:i:s");;
         $user_id = $_SESSION['id'];
 
-        $pdo->exec("INSERT INTO posts 
-		    SET title='{$title}',
-		    	content='{$content}',
-		    	slug='{$title}',
-		    	featured_image='{$featured_image}',
-		    	created_at = '{$date}',
-		    	is_valid = False, 
-                user_id = $user_id
-		    	");
+
+        if (isset($_FILES['featured_image'])) {
+            $errors = array();
+            $file_name = $_FILES['featured_image']['name'];
+            $file_size = $_FILES['featured_image']['size'];
+            $file_tmp = $_FILES['featured_image']['tmp_name'];
+            $file_type = $_FILES['featured_image']['type'];
+            $tmp = explode('.', $file_name);
+            $file_extension = end($tmp);
+            $expensions = array(
+                "jpeg", "jpg", "png"
+            );
+
+            if (in_array($file_extension, $expensions) === false) {
+                $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
+            }
+
+            if ($file_size > 2097152666655) {
+                $errors[] = 'File size must be excately 2 MB';
+            }
+
+            if (empty($errors) == true) {
+                move_uploaded_file($file_tmp, "../upload/" . $file_name);
+            } else {
+            }
+        }
+        $pdo->exec("INSERT INTO posts
+        SET title='{$title}',
+        content='{$content}',
+        slug='{$title}',
+        featured_image='{$featured_image}',
+        created_at = '{$date}',
+        is_valid = False,
+        user_id = $user_id
+        ");
 
         $posts[] = $pdo->lastInsertId();
 
     ?>
-        <script type="text/javascript">
-            alert("Votre publication a été créée, rendez-vous sur votre dashboard pour la valider");
-            window.location.href = "/Blog_Oc/dashboard";
-        </script>
+
     <?php
     }
 }

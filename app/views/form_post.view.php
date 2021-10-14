@@ -10,7 +10,7 @@
     <div class="signup-form">
         <h2>Créer une publication :</h2>
 
-        <form method="post" action="post_create" accept-charset="utf-8">
+        <form method="post" action="post_create" accept-charset="utf-8" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Titre:</label>
                 <input type="text" class="form-control" name="title" /><br>
@@ -19,10 +19,11 @@
                 <label for="text">Contenu:</label>
                 <textarea type="textarea" style="min-height:150px;" class="form-control" name="content"></textarea><br>
             </div>
-            <p>Mettre à jour l'illustration</p>
+            <p>Mettre à jour l'illustration (format acceptés jpg, jpeg, png)</p>
             <input class="form-control" type="file" name="featured_image"><br>
             <input type="submit" class="btn btn-primary" value="Enregistrer" name="submit" />
         </form>
+
 
     </div>
 </div>
