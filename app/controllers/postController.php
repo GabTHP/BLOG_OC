@@ -65,7 +65,7 @@ function post_create()
             }
 
             if (empty($errors) == true) {
-                move_uploaded_file($file_tmp, "../upload/" . $file_name);
+                move_uploaded_file($file_tmp, "../public/assets/img/upload/" . $file_name);
             } else {
             }
         }

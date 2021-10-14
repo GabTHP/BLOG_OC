@@ -22,7 +22,7 @@
 
     <article class="article m-5">
       <div class="article-box">
-        <img src="/Blog_Oc/public/img/devblog.jpg" width="1500" height="1368" alt="">
+        <img src="public/assets/img/upload/<?php echo $post['featured_image'] ?>" width="1500" height="1368" alt="<?php echo $post['featured_image'] ?>">
       </div>
       <div class=" p-3">
         <h1><a href="/Blog_Oc/post/<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h1>
