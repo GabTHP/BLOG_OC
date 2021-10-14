@@ -11,8 +11,10 @@
             $espace = strpos($texte, ' ', $max);
             //Fonction qui récupère l'extrait jusqu'à l'espace préalablement cherché auquel on ajoute "..."
             $chapo = substr($texte, 0, $espace) . '...';
+            echo $chapo;
+        } else {
+            echo $texte;
         }
-        echo $chapo;
         ?>
     </p>
 </div>
@@ -22,6 +24,9 @@
         <a href="/Blog_Oc/blog_all">
             <p class="text-muted"> Retour <p>
         </a>
+        <div class="article-box">
+            <img src="/Blog_Oc/public/assets/img/upload/<?php echo $post['featured_image'] ?>" width="1500" height="1368" alt="<?php echo $post['featured_image'] ?>">
+        </div>
         <h3>
             <?php echo htmlspecialchars($post['title']); ?>
         </h3>
