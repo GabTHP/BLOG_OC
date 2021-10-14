@@ -1,57 +1,56 @@
-<?php
+<div class="jumbotron p-5 text-center">
+    <h1>Inscrivez-vous et participer aux discussions ! </h1>
+</div>
 
+<div class="container p-5">
 
-
-// On affiche chaque entrée une à une
-foreach($all_users as $key => $user) {
-
-?>
-
-<tbody>
-    <tr class="candidates-list">
-    <td class="title">
-        <div class="candidate-list-details">
-        <div class="candidate-list-info">
-            <div class="candidate-list-title">
-            <h5 class="mb-0"><a href="#"><?php echo $user['username']; ?></a></h5>
+    <?php
+    // On affiche chaque entrée une à une
+    foreach ($all_users as $key => $user) {
+    ?>
+        <article class="article m-5">
+            <div>
             </div>
-            <div class="candidate-list-option">
-            <ul class="list-unstyled">
-                <li><i class="fas fa-filter pr-1"></i><?php  echo $user['email']; ?></li>
-                <li><i class="fas fa-map-marker-alt pr-1"></i><?php echo $user['role']; ?></li>
-                <li><i class="fas fa-map-marker-alt pr-1"></i><?php echo $user['is_valid']; ?></li>
-                <?php echo $id = $user['id']; ?>
-                
-                
+            <div class="p-4">
+                <h3 class="mb-0 text-primary"><?php echo $user['username']; ?></h3><br>
+                <p><b> Email : </b><?php echo $user['email']; ?></p>
+                <p><b> Rôle : </b><?php echo $user['role']; ?></p>
+                <p><b>Statut :</b> <?php if ($_SESSION['is_valid'] == 1) {
+                                        echo "Validé";
+                                    } else {
+                                        echo "En attente de validation";
+                                    } ?>
+                </p>
+                <?php $id = $user['id'];
+                if ($user['is_valid'] == 0) {
+                ?>
 
-            </ul>
-        </div>
-        <form method="post" action="users_all" >
-            <input  name="id" type="hidden" value="<?php echo $id ?>">
-            <input type="submit" name="validate" value="validate">
-        </form>
+                    <form method="post" action="users_all">
+                        <input name="id" type="hidden" value="<?php echo $id ?>">
+                        <input type="submit" class="btn btn-primary" name="validate" value="valider le compte">
+                    </form>
 
-        <form method="post" action="users_all" >
-            <input  name="id" type="hidden" value="<?php echo $id ?>" placeholder="<?php echo $id ?>">
-            <input type="submit" name="delete" value="delete">
-        </form>
+                <?php
+                }
+                ?>
 
-        <form method="post" action="users_all" >
-            <input  name="id" type="hidden" value="<?php echo $id ?>">
-            <select name="role">
-                <option value="<?php echo $user['role'] ?>">Role actuel: <?php echo $user['role'] ?></option>
-                <option value="Admin" >Admin</option>
-                <option value="Subscriber"> Subscriber</option>
-            </select>
-            <input type="submit" name="Update_Role" value="Update_Role">
-        </form>
-        </div>
-        </div>
-    </td>
-    </tr>
+
+                <form method="post" action="users_all">
+                    <input name="id" type="hidden" value="<?php echo $id ?>">
+                    <select class="" name="role">
+                        <option value="<?php echo $user['role'] ?>">Role actuel : <?php echo $user['role'] ?></option>
+                        <option value="Admin">Admin</option>
+                        <option value="Subscriber"> Subscriber</option>
+                    </select>
+                    <input type="submit" name="Update_Role" class="btn btn-primary" value="Mettre à jour le rôle">
+                </form>
+                <br>
+                <form method="post" action="users_all">
+                    <input name="id" type="hidden" value="<?php echo $id ?>" placeholder="<?php echo $id ?>">
+                    <input type="submit" name="delete" class="btn btn-danger" value="Supprimer le compte">
+                </form>
+
+            </div>
+        </article>
     <?php } ?>
-</tbody>
-
-
-
-
+</div>

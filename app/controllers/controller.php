@@ -10,5 +10,5 @@ function home()
 
 function error404()
 {
-    echo "page non trouvé" ;
+    require '../app/views/404.view.php';
 }
