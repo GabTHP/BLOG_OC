@@ -6,7 +6,17 @@
         <div class="social-links">
             <a href="https://www.linkedin.com/in/gabriel-bouakira" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
-        <a href="/Blog_Oc/sign_in" class="linkedin">Se Connecter</a>
+        <?php
+        if (isset($_SESSION['role']) && ($_SESSION['role']) == 'Admin') {
+        ?> <a href="/Blog_Oc/dashboard" class="linkedin">Dashboard</a>
+        <?php
+        } else {
+        ?> <a href="/Blog_Oc/sign_in" class="linkedin">Se Connecter</a>
+        <?php
+        }
+        ?>
+
+
     </div>
 </footer><!-- End Footer -->
 
