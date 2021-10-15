@@ -23,6 +23,7 @@
         $req->execute(array($url[1]));
 
         return($post = $req->fetch());
+    
     }
 
 
@@ -30,9 +31,9 @@
         require '../app/db/connDb.php';
         $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
         $url=explode('/', $url );  
-        $req = $pdo->prepare('SELECT * FROM posts_comments WHERE post_id = ? ');
+        $req = $pdo->prepare('SELECT * FROM comments WHERE post_id = ? ');
         $req->execute(array($url[1]));
-        return ($post_comments = $req->fetchAll());
+        return ($comments = $req->fetchAll());
     }
 
 
