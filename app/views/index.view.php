@@ -271,8 +271,13 @@
               </div>
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="text-center"><input name="submit" type="submit"></div>
+              </div><br>
+              <div class="text-center"><input class="btn btn-primary" name="submit" type="submit"></div>
+              <?php
+              if (isset($_POST["submit"])) {
+                echo 'Message bien envoyé';
+              }
+              ?>
             </form>
 
           </div>

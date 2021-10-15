@@ -28,14 +28,12 @@ function home()
 
         $mail->Subject    =  $_POST["subject"];             //Le sujet du mail
         $mail->WordWrap   = 50;                             //Nombre de caracteres pour le retour a la ligne automatique
-        $mail->Body =    $_POST["message"];
+        $mail->Body =    $_POST["message"] . "<br>" .  $_POST["email"];
         $mail->AltBody = $_POST["message"];                 //Texte brut
         $mail->IsHTML(false);                               //Préciser qu'il faut utiliser le texte brut
 
         if (!$mail->send()) {
             echo $mail->ErrorInfo;
-        } else {
-            echo 'Message bien envoyé';
         }
     }
 }
