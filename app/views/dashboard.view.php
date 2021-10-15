@@ -45,7 +45,7 @@
                     $count = $count + 1;
             ?> <article class="article m-3">
                         <div class="m-3">
-                            <p> <b> Titre : </b>?php echo $post['title']; ?> </p>
+                            <p> <b> Titre : </b><?php echo $post['title']; ?> </p>
                             <p> <b>Créé le :</b> <?php echo $post['created_at']; ?></p>
                             <?php
                             $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");
@@ -58,6 +58,11 @@
                             <form method="post" action="dashboard">
                                 <input name="id" type="hidden" value="<?php echo $post['id'] ?>" placeholder="<?php echo $post['id'] ?>">
                                 <input type="submit" style="margin-right:2px;" class=" btn btn-success" name="valid" value="Valider"><a class="btn btn-primary" href="/Blog_Oc/post/<?php echo $post['id'] ?>">Consulter la publication</a>
+                            </form>
+                            <form method="post" action="dashboard">
+                                <input name="id" type="hidden" value="<?php echo $post['id'] ?>" placeholder="<?php echo $post['id'] ?>">
+
+                                <input type="submit" style="margin-top:2px;" class=" btn btn-danger" name="delete_post" value="Supprimer">
                             </form>
                         </div>
                     <?php
