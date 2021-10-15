@@ -6,9 +6,7 @@ function home()
 {
     require '../app/views/default.layout.view.php';
     require '../app/views/index.view.php';
-    require '../PHPMailer/src/Exception.php';
-    require '../PHPMailer/src/PHPMailer.php';
-    require '../PHPMailer/src/SMTP.php';
+
     if (isset($_POST["submit"])) {
         $mail = new PHPMailer\PHPMailer\PHPMailer();
         $mail->IsSMTP();
