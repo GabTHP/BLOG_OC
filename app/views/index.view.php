@@ -257,7 +257,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="Blog_Oc/forms/contact.php" method="post" role="form">
+            <form action="#contact" method="post" role="form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Votre Nom" required>
@@ -272,12 +272,7 @@
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Chargement</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Votre message a été envoyé, Merci !</div>
-              </div>
-              <div class="text-center"><button type="submit">Envoyer</button></div>
+              <div class="text-center"><input name="submit" type="submit"></div>
             </form>
 
           </div>
@@ -288,6 +283,7 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
+
   <?php include '../app/views/footer.view.php'; ?>
 </body>
 
