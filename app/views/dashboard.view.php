@@ -54,10 +54,11 @@
 
                             ?>
                             <p> <b>Auteur :</b> <?php echo $user['username']; ?> </p>
-
+                            <a class="btn btn-warning text-white" href="/Blog_Oc/edit_post/<?php echo $post['id'] ?>">Modifier</a>
+                            <a style="margin-top:4px;" class="btn btn-primary" href="/Blog_Oc/post/<?php echo $post['id'] ?>">Consulter la publication</a>
                             <form method="post" action="dashboard">
                                 <input name="id" type="hidden" value="<?php echo $post['id'] ?>" placeholder="<?php echo $post['id'] ?>">
-                                <input type="submit" style="margin-right:2px;" class=" btn btn-success" name="valid" value="Valider"><a class="btn btn-primary" href="/Blog_Oc/post/<?php echo $post['id'] ?>">Consulter la publication</a>
+                                <input type="submit" style="margin-right:2px;" class=" btn btn-success" name="valid" value="Valider">
                             </form>
                             <form method="post" action="dashboard">
                                 <input name="id" type="hidden" value="<?php echo $post['id'] ?>" placeholder="<?php echo $post['id'] ?>">

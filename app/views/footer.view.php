@@ -8,7 +8,10 @@
         </div>
         <?php
         if (isset($_SESSION['role']) && ($_SESSION['role']) == 'Admin') {
-        ?> <a href="/Blog_Oc/dashboard" class="linkedin">Dashboard</a>
+        ?>
+            <a href="/Blog_Oc/dashboard" class="linkedin">Dashboard</a><br>
+            <a href="/Blog_Oc/profile" class="linkedin">Mon Profil</a><br>
+            <a href="/Blog_Oc/logout" class="linkedin">Se déconnecter</a>
         <?php
         } else {
         ?> <a href="/Blog_Oc/sign_in" class="linkedin">Se Connecter</a>

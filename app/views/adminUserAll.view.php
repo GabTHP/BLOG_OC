@@ -39,8 +39,8 @@
                     <input name="id" type="hidden" value="<?php echo $id ?>">
                     <select class="" name="role">
                         <option value="<?php echo $user['role'] ?>">Role actuel : <?php echo $user['role'] ?></option>
-                        <option value="Admin">Admin</option>
-                        <option value="Subscriber"> Subscriber</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Subscriber</option>
                     </select>
                     <input type="submit" name="Update_Role" class="btn btn-primary" value="Mettre à jour le rôle">
                 </form>
@@ -54,3 +54,4 @@
         </article>
     <?php } ?>
 </div>
+<?php include '../app/views/footer.view.php'; ?>

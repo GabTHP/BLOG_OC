@@ -34,14 +34,14 @@ function users_all()
     if (isset($_POST['Update_Role'])) {
         $id = $_POST['id'];
         $role =  $_POST['role'];
-        $pdo->exec("UPDATE `users` SET role = 1 WHERE `users`.`id` = {$id}");
-    }
+        $pdo->exec("UPDATE `users` SET role = {$role} WHERE `users`.`id` = {$id}");
     ?>
-    <script type="text/javascript">
-        window.alert("Le rôle de l'utilisateur a été mis à jour");
-        window.location.href = "/Blog_Oc/users_all";
-    </script>
+        <script type="text/javascript">
+            window.alert("Le rôle de l'utilisateur a été mis à jour");
+            window.location.href = "/Blog_Oc/users_all";
+        </script>
     <?php
+    }
 }
 
 function dashboard()

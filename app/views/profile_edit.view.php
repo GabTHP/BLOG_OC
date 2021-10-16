@@ -14,7 +14,7 @@
                 <p>Pseudo : <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['username']; ?>" />
             </div>
             <div class="form-group">
-                <p>Email : <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['email']; ?>" />
+                <p>Email : <input type="email" class="form-control" name="email" value="<?php echo $_SESSION['email']; ?> " required>
             </div>
             <input type="submit" class="btn btn-primary" value="Valider" name="Valider" />
         </form>
@@ -23,10 +23,10 @@
 
         <form method="post" action="" accept-charset="utf-8">
             <div class="form-group">
-                <p>Nouveau mot de passe : <input type="text" class="form-control" name="password" />
+                <p>Nouveau mot de passe : <input type="text" class="form-control" name="password" required>
             </div>
             <div class="form-group">
-                <p>Confirmer le mot de passe : <input type="text" class="form-control" name="confirm_password" />
+                <p>Confirmer le mot de passe : <input type="text" class="form-control" name="confirm_password" required>
             </div>
             <input type="submit" class="btn btn-primary" value="Confirmer" name="submit_mdp" />
         </form>
