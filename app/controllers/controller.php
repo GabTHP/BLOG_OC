@@ -10,15 +10,15 @@ function home()
     if (isset($_POST["submit"])) {
         $mail = new PHPMailer\PHPMailer\PHPMailer();
         $mail->IsSMTP();
-        $mail->Host = 'smtp.gmail.com';                     //Adresse IP ou DNS du serveur SMTP
-        $mail->Port = 465;                                  //Port TCP du serveur SMTP
+        $mail->Host = $_ENV['MAIL_HOST'];                     //Adresse IP ou DNS du serveur SMTP
+        $mail->Port = $_ENV['MAIL_PORT'];                                  //Port TCP du serveur SMTP
         $mail->SMTPAuth = 1;                                //Utiliser l'identification
         $mail->CharSet = 'UTF-8';
 
         if ($mail->SMTPAuth) {
             $mail->SMTPSecure = 'ssl';                      //Protocole de sécurisation des échanges avec le SMTP
-            $mail->Username   =  'gabriel.bouak@gmail.com'; //Adresse email à utiliser
-            $mail->Password   =  'LEBIGboss34';             //Mot de passe de l'adresse email à utiliser
+            $mail->Username   =  $_ENV['MAIL_SENDER']; //Adresse email à utiliser
+            $mail->Password   =  $_ENV['MAIL_MDP'];             //Mot de passe de l'adresse email à utiliser
         }
 
         $mail->From       = $_POST["email"];          //L'email à afficher pour l'envoi
@@ -35,6 +35,11 @@ function home()
         if (!$mail->send()) {
             echo $mail->ErrorInfo;
         }
+?>
+        <script type="text/javascript">
+            alert("Message bien envoyé, votre demande sera traitée dans les meilleurs délais.");
+        </script>
+<?php
     }
 }
 

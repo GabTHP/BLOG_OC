@@ -25,7 +25,15 @@
             <p class="text-muted"> Retour <p>
         </a>
         <div class="article-box">
-            <img src="/Blog_Oc/public/assets/img/upload/<?php echo $post['featured_image'] ?>" width="1500" height="1368" alt="<?php echo $post['featured_image'] ?>">
+            <?php if ($post['featured_image'] == '') {
+            ?>
+                <img src="/Blog_Oc/public/assets/img/devblog.jpg">
+            <?php
+            } else {
+            ?>
+                <img src="/Blog_Oc/public/assets/img/upload/<?php echo $post['featured_image'] ?>" width="1500" height="1368" alt="<?php echo $post['featured_image'] ?>">
+            <?php }
+            ?>
         </div>
         <h3>
             <?php echo htmlspecialchars($post['title']); ?>

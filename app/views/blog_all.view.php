@@ -23,7 +23,15 @@
 
       <article class="article m-5">
         <div class="article-box">
-          <img src="public/assets/img/upload/<?php echo $post['featured_image'] ?>" width="1500" height="1368" alt="<?php echo $post['featured_image'] ?>">
+          <?php if ($post['featured_image'] == '') {
+          ?>
+            <img src="public/assets/img/devblog.jpg">
+          <?php
+          } else {
+          ?>
+            <img src="public/assets/img/upload/<?php echo $post['featured_image'] ?>" alt="<?php echo $post['featured_image'] ?>">
+          <?php }
+          ?>
         </div>
         <div class=" p-3">
           <h1><a href="/Blog_Oc/post/<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h1>
