@@ -29,11 +29,11 @@
           <?php
           } else {
           ?>
-            <img src="public/assets/img/upload/<?php echo $post['featured_image'] ?>" alt="<?php echo $post['featured_image'] ?>">
+            <img style="min-width:100%;" src="public/assets/img/upload/<?php echo $post['featured_image'] ?>" alt="<?php echo $post['featured_image'] ?>">
           <?php }
           ?>
         </div>
-        <div class=" p-3">
+        <div class=" p-3" style="min-width:50%">
           <h1><a href="/Blog_Oc/post/<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h1>
           <p>
             <?php
@@ -46,23 +46,25 @@
               $espace = strpos($texte, ' ', $max);
               //Fonction qui récupère l'extrait jusqu'à l'espace préalablement cherché auquel on ajoute "..."
               $chapo = substr($texte, 0, $espace) . '...';
+              echo $chapo;
+            } else {
+              echo $texte;
             }
-            echo $chapo;
             ?>
           </p>
           <a href="/Blog_Oc/post/<?php echo $post['id'] ?>"><button class="btn btn-primary">Lire l'article</button></a><br><br>
 
           <?php
-          if ($post['updated_at'] == null) {
+          if ($post['updated_at'] == "0000-00-00 00:00:00") {
           ?>
 
             <p>Crée le <?php echo $post['created_at'];
                       } else {
                         ?>
             </p>
-            <p>Dernière mise à jour le <?php echo $post['updated_at'];
-                                      }
-                                        ?>
+            <p>Crée le <?php echo $post['created_at'] ?>, dernière mise à jour le <?php echo $post['updated_at'];
+                                                                                }
+                                                                                  ?>
             </p>
             <?php
             $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");

@@ -9,7 +9,6 @@
 
     <section class="signup-form">
         <h2>Mettre à Jour la publication :</h2>
-
         <form method="post" action="" accept-charset="utf-8">
             <div class="form-group">
                 <label for="title">Titre:</label>
@@ -21,7 +20,16 @@
             </div>
             <input type="submit" class="btn btn-primary" value="Mettre à jour" name="update" />
         </form>
-
+        <br><br>
+        <form method="post" action="" accept-charset="utf-8" enctype="multipart/form-data">
+            <p>Mettre à jour l'illustration (format acceptés jpg, jpeg, png)</p>
+            <input class="form-control" type="file" name="featured_image"><br>
+            <input type="submit" class="btn btn-primary" value="Mettre à jour" name="update_image" />
+        </form>
+        <br><br>
+        <p> illustration actuelle :</p>
+        <img src="/Blog_Oc/public/assets/img/upload/<?php echo $post['featured_image'] ?>" max-width="500px" width="50%" alt="<?php echo $post['featured_image'] ?>">
+    </section>
 </div>
 
 <?php include '../app/views/footer.view.php'; ?>

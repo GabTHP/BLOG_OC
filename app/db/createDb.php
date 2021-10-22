@@ -2,13 +2,12 @@
 
 // Db connection
 
-require 'connDb.php' ;
+require 'connDb.php';
 
 // Create users table
 
 $pdo->exec("CREATE TABLE users (
 	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	slug VARCHAR(255) NOT NULL,
 	username VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	password VARCHAR(255) NOT NULL,
@@ -25,7 +24,6 @@ $pdo->exec("CREATE TABLE posts (
 	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	user_id INT,
 	title VARCHAR(255) NOT NULL,
-	slug VARCHAR(255) NOT NULL,
 	content text NOT NULL,
 	featured_image VARCHAR(255) NOT NULL,
 	is_valid TINYINT NOT NULL,
@@ -34,7 +32,6 @@ $pdo->exec("CREATE TABLE posts (
 	FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
-echo 'POSTS, ';
 
 // Create comments table
 
@@ -49,17 +46,4 @@ $pdo->exec("CREATE TABLE comments (
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
-echo 'Tables : Comments, ';
-
-
-
-
-
-
-
-
-
-
-
-
-
+echo 'Succes - all table created';

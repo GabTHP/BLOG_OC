@@ -16,6 +16,7 @@ function blog_all()
 ?>
         <script type="text/javascript">
             window.alert("La publication a été supprimée")
+            window.location.href("/dashboard")
         </script>
         <?php
     }
@@ -129,6 +130,56 @@ function post_edit()
             alert("La publication a été mise à jour");
             window.location.href = "/Blog_Oc/post/<?php echo $post_id ?>";
         </script>
+        <?php
+    }
+
+    if (isset($_POST["update_image"])) {
+        $featured_image = $_FILES['featured_image']['name'];
+        $post_id = $post['id'];
+
+        if (isset($_FILES['featured_image'])) {
+            $errors = array();
+            $file_name = $_FILES['featured_image']['name'];
+            $file_size = $_FILES['featured_image']['size'];
+            $file_tmp = $_FILES['featured_image']['tmp_name'];
+            $file_type = $_FILES['featured_image']['type'];
+            $tmp = explode('.', $file_name);
+            $file_extension = end($tmp);
+            $expensions = array(
+                "jpeg", "jpg", "png"
+            );
+
+            if (in_array($file_extension, $expensions) === false) {
+                $errors[] = "extension not allowed, please choose a jpg, jpeg or png file.";
+        ?>
+                <script>
+                    alert("Vérifiez le format de votre illustration, celle-ci doit être au format jpg, jpeg ou png.");
+                </script>
+            <?php
+            }
+
+            if ($file_size > 2097152666655) {
+                $errors[] = 'File size must be excately 2 MB';
+            ?>
+                <script>
+                    alert("La taille de votre illustration est supérieure à la taille maximale autorisée de 2 MB.");
+                </script>
+            <?php
+            }
+
+            if (empty($errors) == true) {
+                move_uploaded_file($file_tmp, "../public/assets/img/upload/" . $file_name);
+            }
+            $pdo->exec("UPDATE `posts` SET featured_image = '{$featured_image}'WHERE `posts`.`id` = 1");
+            ?>
+
+            <script type="text/javascript">
+                alert("L'illustration de la publication a été mise à jour");
+                window.location.href = "/Blog_Oc/post/<?php echo $post_id ?>";
+            </script>
 <?php
+
+
+        }
     }
 }

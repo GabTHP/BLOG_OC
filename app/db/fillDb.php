@@ -30,7 +30,6 @@ for ($i = 0; $i < 10; $i++) {
 	$pdo->exec("INSERT INTO users 
 		    SET username='{$faker->userName}',
 		    	password='{$hashPassword}',
-		    	slug='{$faker->slug}',
 		    	email='{$faker->email}',
 		    	role = 'Subscriber',
 		    	created_at='{$faker->date} {$faker->time}',
@@ -48,7 +47,6 @@ for ($i = 0; $i < 1; $i++) {
 	$pdo->exec("INSERT INTO users 
 		    SET username='Gabriel',
 		    	password='{$hashPassword}',
-		    	slug='Gab',
 		    	email='gabriel.bouakira@hotmail.fr',
 		    	role = 'Admin',
 		    	created_at='{$faker->date} {$faker->time}',
@@ -63,7 +61,6 @@ echo 'admin gabriel created!';
 for ($i = 0; $i < 70; $i++) {
 	$pdo->exec("INSERT INTO posts 
 		    SET user_id='11',
-		    	slug='{$faker->slug}',
 		    	title='{$faker->sentence(3)}',
 		    	content='{$faker->paragraphs(rand(3, 15), true)}',
 		    	featured_image='',
@@ -73,6 +70,6 @@ for ($i = 0; $i < 70; $i++) {
 	$posts[] = $pdo->lastInsertId();
 }
 
-echo 'Posts succesfully faked';
+echo 'Posts & User succesfully faked & admin account';
 
 echo 'everything fine so far';

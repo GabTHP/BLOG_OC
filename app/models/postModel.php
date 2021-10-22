@@ -9,7 +9,7 @@ $url = explode('/', $url);
 function get_all_posts()
 {
     require '../app/db/connDb.php';
-    $all_posts = $pdo->query('SELECT * FROM posts');
+    $all_posts = $pdo->query('SELECT * FROM posts ORDER BY created_at DESC');
     return ($all_posts->fetchAll());
 }
 
