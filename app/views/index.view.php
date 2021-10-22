@@ -277,7 +277,9 @@
               if (isset($_POST["submit"])) {
                 echo 'Message bien envoyé';
               }
+              echo getenv('MAIL_MDP');
               ?>
+
             </form>
 
           </div>

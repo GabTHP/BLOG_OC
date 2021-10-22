@@ -12,7 +12,8 @@ require '../app/controllers/userController.php';
 
 require '../app/controllers/postController.php';
 
-
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 
 
@@ -21,6 +22,7 @@ $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
 
 
 if (isset($url)) {
+
     $url = explode('/', $url);
 }
 if ($url[0] == '') {

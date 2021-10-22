@@ -11,6 +11,7 @@ function sign_up()
         $hash_password = password_hash($password, PASSWORD_BCRYPT);
         $date = date("Y-m-d H:i:s");
 
+
         $pdo->exec("INSERT INTO users 
 		    SET username='{$username}',
 		    	password='{$hash_password}',
@@ -29,6 +30,7 @@ function sign_up()
         <?php
     }
 }
+
 
 function sign_in()
 {
@@ -57,15 +59,18 @@ function sign_in()
                     <script type="text/javascript">
                         window.location.href = "/Blog_Oc/blog_all";
                     </script>
-    <?php
+                <?php
                 } else {
-                    echo "mauvais mot de passe";
+                ?>
+                    <script type="text/javascript">
+                        window.alert("La combinaison mot de passe et email ne correspond pas à un utilisateur existant.")
+                    </script>
+        <?php
                 }
             }
 
             $req->closeCursor();
         } else {
-            echo 'Merci de renseigner un mot de passe et un email pour se connecter';
         }
     }
 }
@@ -86,16 +91,17 @@ function profile_edit()
         $username =  $_POST['username'];
         $email = $_POST['email'];
         $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
 
 
         $pdo->exec("UPDATE `users` SET username = '{$username}', slug = '{$username}', email = '{$email}' WHERE `users`.`id` = {$user_id}");
+        ?>
+        <script type="text/javascript">
+            window.alert("votre profil a été mis à jour")
+            window.location.href = "/Blog_Oc/profile";
+        </script>
+        <?php
     }
-    ?>
-    <script type="text/javascript">
-        window.alert("votre profil a été mis à jour")
-        window.location.href = "/Blog_Oc/profile";
-    </script>
-    <?php
 
     if (isset($_POST['submit_mdp'])) {
         $password =  $_POST['password'];
@@ -105,14 +111,18 @@ function profile_edit()
             $hash_password = password_hash($password, PASSWORD_BCRYPT);
 
             $pdo->exec("UPDATE `users` SET password = '{$hash_password}' WHERE `users`.`id` = {$user_id}");
-    ?>
+        ?>
             <script type="text/javascript">
                 window.alert("votre mot de passe a été misà jour")
                 window.location.href = "/Blog_Oc/profile";
             </script>
         <?php
         } else {
-            echo "les mots de passes doivent être identiques";
+        ?>
+            <script type="text/javascript">
+                window.alert("Les mots de passes ne sont pas identiques")
+            </script>
+        <?php
         }
     }
 
