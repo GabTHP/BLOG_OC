@@ -1,10 +1,10 @@
 <?php
 
-$host = "localhost";
+$host = $_ENV["BDD_HOST"];
 $db = 'blog_oc';
-$user = "root";
-$psw =  "pass1234";
-$port =  "3306";
+$user = $_ENV["BDD_USER"];
+$psw =  $_ENV["BDD_PSW"];
+$port =  $_ENV["BDD_PORT"];
 $charset = 'utf8mb4';
 $dsn = "mysql:host=$host;dbname=$db;port=$port;charset=$charset";
 $options = [

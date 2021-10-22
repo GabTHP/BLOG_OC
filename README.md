@@ -56,9 +56,9 @@ L'utilisation de ce blog nécessite l'installation de PHP et Composer.
 
 **Etape 1 :** Cloner le Repositary sur votre serveur.
 
-**Etape 2 :** Créer une base de données sur votre SGBD et importer le fichier blog.example.sql
+**Etape 2 :** Créer une base de données nommée "blog_oc" sur votre SGBD et importer le fichier blog_oc.sql disponible à la racine du repository.
 
-**Etape 3 :** Créer un fichier .env avec les informations avec les informations de votre BDD et votre serveur mail pour le bon fonctionnement du formulaire de contact.
+**Etape 3 :** Créer un fichier .env dans le dossier public, en suivant le modèle du fichier .en_sample du dossier public, avec les informations de votre BDD et votre serveur mail pour le bon fonctionnement du formulaire de contact.
 
 **Etape 4 :** Vous pouvez accéder au blog avec les informations utilisateur
 
