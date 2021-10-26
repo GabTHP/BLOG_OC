@@ -4,7 +4,6 @@
 
 function home()
 {
-    require '../app/views/default.layout.view.php';
     require '../app/views/index.view.php';
 
     if (isset($_POST["submit"])) {

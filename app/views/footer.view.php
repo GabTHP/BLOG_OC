@@ -40,6 +40,6 @@
 <!-- Template Main JS File -->
 <script src="http://localhost/Blog_Oc/public/assets/js/main.js"></script>
 
-
+</body>
 
 </html>

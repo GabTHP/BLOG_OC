@@ -48,9 +48,7 @@
                             <p> <b> Titre : </b><?php echo $post['title']; ?> </p>
                             <p> <b>Créé le :</b> <?php echo $post['created_at']; ?></p>
                             <?php
-                            $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");
-                            $querry->execute(array($post['user_id']));
-                            $user = $querry->fetch();
+                            $user = get_user_post($post['user_id']);
 
                             ?>
                             <p> <b>Auteur :</b> <?php echo $user['username']; ?> </p>
@@ -130,3 +128,12 @@
     </div>
 
 </div>
+
+
+
+
+
+<?php include '../app/views/footer.view.php'; ?>
+</body>
+
+</html>
