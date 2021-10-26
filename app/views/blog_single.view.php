@@ -3,13 +3,9 @@
     <p>
         <?php
         $max = 200;
-        //Variable contenant ton texte à couper :)
         $texte = $post['content'];
-        //Condition qui teste que le texte est bien plus grand que la phrase à couper, sinon ca sert à rien de la couper :D
         if (strlen($texte) > $max) {
-            //Fonction qui récupère la position du premier espace à partir de la position $max pour éviter de couper un mot en plein milieu
             $espace = strpos($texte, ' ', $max);
-            //Fonction qui récupère l'extrait jusqu'à l'espace préalablement cherché auquel on ajoute "..."
             $chapo = substr($texte, 0, $espace) . '...';
             echo $chapo;
         } else {
@@ -46,9 +42,7 @@
         </p>
     </div>
     <?php
-    $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");
-    $querry->execute(array($post['user_id']));
-    $user = $querry->fetch();
+    $user = get_user_post($post['user_id']);
     ?>
     <p class="text-muted">Rédigé par <?php echo $user['username']; ?>,
         <?php

@@ -13,13 +13,21 @@ function get_all_posts()
     return ($all_posts->fetchAll());
 }
 
+function get_user_post($user_id)
+{
+    require '../app/db/connDb.php';
+    $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");
+    $querry->execute(array($user_id));
+    return ($user = $querry->fetch());
+}
+
 function get_one_post()
 {
     // Récupération du billet
 
 
     require '../app/db/connDb.php';
-    $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]); // Cette ligne doit se trouver dans un controlleur
+    $url = str_replace("/Blog_Oc/", "", $_SERVER["REQUEST_URI"]);
     $url = explode('/', $url);
     $req = $pdo->prepare('SELECT * FROM posts WHERE id = ? ');
     $req->execute(array($url[1]));

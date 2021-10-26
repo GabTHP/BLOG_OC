@@ -5,8 +5,10 @@ require '../app/views/default.layout.view.php';
 function blog_all()
 {
     require '../app/models/postModel.php';
+
     require '../app/db/connDb.php';
     $all_posts = get_all_posts();
+    $user = get_user_post($user);
     require '../app/views/blog_all.view.php';
 
     if (isset($_POST['delete'])) {
@@ -18,17 +20,44 @@ function blog_all()
             window.alert("La publication a été supprimée")
             window.location.href("/dashboard")
         </script>
-        <?php
+    <?php
     }
 }
+
+
 
 function blog_single()
 {
     require '../app/models/postModel.php';
     require '../app/db/connDb.php';
     $post = get_one_post();
+    $user = get_user_post($user);
     $comments = get_comments();
     require '../app/views/blog_single.view.php';
+
+    if (isset($_POST["submit"])) {
+        $pseudo = $_SESSION['username'];
+        $content = addslashes($_POST['content']);
+        $date = date("Y-m-d H:i:s");;
+        $user_id = $_SESSION['id'];
+        $post_id = $url[1];
+
+        $pdo->exec("INSERT INTO comments 
+        SET content='{$content}',
+            pseudo='{$pseudo}',
+            created_at = '{$date}',
+            is_valid = False, 
+            user_id = $user_id,
+            post_id = $post_id,
+            title = ' '
+            ");
+    ?>
+        <script type="text/javascript">
+            alert("Votre commentaire a été soumis, il est en cour de validation.");
+            window.location.href = "/Blog_Oc/post/<?php echo $post['id']; ?>";
+        </script>
+        <?php
+    }
 }
 
 function post_create()
@@ -72,7 +101,7 @@ function post_create()
                 <script>
                     alert("La taille de votre illustration est supérieure à la taille maximale autorisée de 2 MB.");
                 </script>
-        <?php
+            <?php
             }
 
             if (empty($errors) == true) {
@@ -87,16 +116,16 @@ function post_create()
                 user_id = $user_id
                 ");
                 $posts[] = $pdo->lastInsertId();
+
+            ?>
+                <script type="text/javascript">
+                    alert("La publication a été créée avec succés, vous allez être redirigé vers votre dashboard pour valider la publication.");
+                    window.location.href = "/Blog_Oc/dashboard";
+                </script>
+        <?php
             } else {
             }
         }
-        ?>
-        <script type="text/javascript">
-            alert("La publication a été créée avec succés, vous allez être redirigé vers votre dashboard pour valider la publication.");
-            window.location.href = "/Blog_Oc/dashboard";
-        </script>
-    <?php
-
     }
 }
 
@@ -125,7 +154,7 @@ function post_edit()
             is_valid = 1 
         WHERE posts.id = {$post_id}");
 
-    ?>
+        ?>
         <script type="text/javascript">
             alert("La publication a été mise à jour");
             window.location.href = "/Blog_Oc/post/<?php echo $post_id ?>";
