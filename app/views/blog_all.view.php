@@ -34,7 +34,7 @@
           ?>
         </div>
         <div class=" p-3" style="min-width:50%">
-          <h1><a href="/Blog_Oc/post/<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h1>
+          <h1><a href="/Blog_Oc/post/<?php echo $post['id'] ?>"><?php echo strip_tags($post['title']); ?></a></h1>
           <p>
             <?php
             $max = 200;
@@ -42,9 +42,9 @@
             if (strlen($texte) > $max) {
               $espace = strpos($texte, ' ', $max);
               $chapo = substr($texte, 0, $espace) . '...';
-              echo $chapo;
+              echo strip_tags($chapo);
             } else {
-              echo $texte;
+              echo strip_tags($texte);
             }
             ?>
           </p>
@@ -65,7 +65,7 @@
             <?php
             $user = get_user_post($post['user_id']);
             ?>
-            <p>Auteur : <?php echo $user['username']; ?></p>
+            <p>Auteur : <?php echo strip_tags($user['username']); ?></p>
             <?php if (isset($_SESSION['role']) and $_SESSION['role'] == 'Admin') {
             ?>
               <p><b> Gérer l'article : </b></p>
