@@ -12,7 +12,7 @@
             <div>
             </div>
             <div class="p-4">
-                <h3 class="mb-0 text-primary"><?php echo $user['username']; ?></h3><br>
+                <h3 class="mb-0 text-primary"><?php echo strip_tags($user['username']); ?></h3><br>
                 <p><b> Email : </b><?php echo $user['email']; ?></p>
                 <p><b> Rôle : </b><?php echo $user['role']; ?></p>
                 <p><b>Statut :</b> <?php if ($_SESSION['is_valid'] == 1) {

@@ -92,7 +92,7 @@
             ?>
                     <article class="article m-3">
                         <div class="m-3">
-                            <p> <b>Contenu :</b> <br> <?php echo $comment['content']; ?></p>
+                            <p> <b>Contenu :</b> <br> <?php echo strip_tags($comment['content']); ?></p>
                             <p> <b>Créé le :</b> <?php echo $comment['created_at']; ?> </p>
                             <?php
                             $querry = $pdo->prepare("SELECT * FROM users WHERE id = ? ");
@@ -100,7 +100,7 @@
                             $user = $querry->fetch();
 
                             ?>
-                            <p> <b>Auteur : </b> <?php echo $user['username']; ?></p>
+                            <p> <b>Auteur : </b> <?php echo strip_tags($user['username']); ?></p>
                             <form method="post" action="dashboard">
                                 <input name="id" type="hidden" value="<?php echo $comment['id'] ?>" placeholder="<?php echo $comment['id'] ?>">
                                 <input type="submit" class="btn btn-success" style="padding-right:2px;" name="valid_comment" value="Valider le commentaire"> <a class="btn btn-primary" target="_blank" href="/Blog_Oc/post/<?php echo $comment['post_id'] ?>">Consulter la publication</a>

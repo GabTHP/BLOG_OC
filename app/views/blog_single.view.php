@@ -44,14 +44,14 @@
     <?php
     $user = get_user_post($post['user_id']);
     ?>
-    <p class="text-muted">Rédigé par <?php echo $user['username']; ?>,
+    <p class="text-muted">Rédigé par <?php echo strip_tags($user['username']); ?>,
         <?php
         if ($post['updated_at'] == null) {
         ?>
-            publié le <?php echo $post['created_at'];
+            publié le <?php echo strip_tags($post['created_at']);
                     } else {
                         ?>
-            dernière mise à jour le <?php echo $post['updated_at'];
+            dernière mise à jour le <?php echo strip_tags($post['updated_at']);
                                 }
                                     ?>
     </p>
@@ -70,36 +70,35 @@
             if ($comment['is_valid'] == True) {
                 $count = $count + 1;
         ?></b>
-                <h2>Auteur <br> <?php echo $comment['pseudo']; ?> </h2>
-                Contenu <br>
-                <?php echo ($comment['content']); ?> <br>
-                <p> <?php
+                <p>Auteur : <?php echo strip_tags($comment['pseudo']); ?><br>
+                    <?php echo strip_tags(($comment['content'])); ?> <br>
+                </p> <?php
+                    }
+                }
+                if ($count == 0) {
+                    echo "Il n'y a pas encore de commentaire, soyez le premier à réagir ! :)";
                 }
             }
-            if ($count == 0) {
-                echo "Il n'y a pas encore de commentaire, soyez le premier à réagir ! :)";
-            }
+                        ?>
+
+    <div>
+
+        <h2>Ajouter un commentaire :</h2>
+        <?php if (isset($_SESSION['username'])) {
+        ?>
+            <form method="post" action="" accept-charset="utf-8">
+                <textarea class="form-control" type="text" name="content" placeholder="Texte"></textarea><br>
+                <input class="btn btn-primary" type="submit" value="Publier" name="submit" />
+            </form>
+        <?php
+        } else {
+        ?>
+            <p ca> Vous devez être connecté pour laisser un commentaire </p>
+            <a class="btn btn-primary" href="/Blog_Oc/sign_in"> Se connecter</a>
+        <?php
         }
-                    ?>
-
-                <div>
-
-                    <h2>Ajouter un commentaire :</h2>
-                    <?php if (isset($_SESSION['username'])) {
-                    ?>
-                        <form method="post" action="" accept-charset="utf-8">
-                            <textarea class="form-control" type="text" name="content" placeholder="Texte"></textarea><br>
-                            <input class="btn btn-primary" type="submit" value="Publier" name="submit" />
-                        </form>
-                    <?php
-                    } else {
-                    ?>
-                        <p> Vous devez être connecté pour laisser un commentaire </p>
-                        <a class="btn btn-primary" href="/Blog_Oc/sign_in"> Se connecter</a>
-                    <?php
-                    }
-                    ?>
-                </div>
+        ?>
+    </div>
 </div>
 
 <?php include '../app/views/footer.view.php'; ?>
